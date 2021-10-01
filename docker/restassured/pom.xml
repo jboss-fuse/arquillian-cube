@@ -7,10 +7,6 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <properties>
-
-  </properties>
-
   <name>Arquillian Cube Docker RestAssured Integration</name>
   <artifactId>arquillian-cube-docker-restassured</artifactId>
 

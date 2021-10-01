@@ -8,9 +8,6 @@
   <name>Arquillian Cube Docker Functional Test Graphene</name>
   <artifactId>arquillian-cube-docker-ftest-graphene</artifactId>
 
-  <properties>
-  </properties>
-
   <dependencyManagement>
     <dependencies>
       <dependency>

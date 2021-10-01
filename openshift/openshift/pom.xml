@@ -11,7 +11,7 @@
 
   <properties>
     <version.openshift_restclient>1.0.0-SNAPSHOT</version.openshift_restclient>
-    <version.javax.inject>1</version.javax.inject>
+    <version.javax.inject>1.0.0.redhat-00008</version.javax.inject>
     <version.jgit>4.0.0.201506090130-r</version.jgit>
     <version.alpn>8.1.9.v20160720</version.alpn>
     <version.selenium>3.6.0</version.selenium>
@@ -126,7 +126,7 @@
     <dependency>
       <groupId>org.javassist</groupId>
       <artifactId>javassist</artifactId>
-      <version>3.18.1-GA</version>
+      <version>3.18.1.GA-redhat-2</version>
     </dependency>
 
     <dependency>

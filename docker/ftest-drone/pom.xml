@@ -8,9 +8,6 @@
   <name>Arquillian Cube Docker Functional Test Drone</name>
   <artifactId>arquillian-cube-docker-ftest-drone</artifactId>
 
-  <properties>
-  </properties>
-
   <dependencyManagement>
     <dependencies>
       <dependency>
