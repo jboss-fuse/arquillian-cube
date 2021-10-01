@@ -8,9 +8,6 @@
   <name>Arquillian Cube Docker Functional Test Docker Compose V2 with Context and Git</name>
   <artifactId>ftest-docker-compose-v2-git-context</artifactId>
 
-  <properties>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>org.arquillian.cube</groupId>
@@ -46,7 +43,7 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>1.7.21</version>
+      <version>1.7.29.redhat-00002</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

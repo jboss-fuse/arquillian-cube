@@ -8,9 +8,6 @@
   <name>Arquillian Cube Docker Functional Test Reporter</name>
   <artifactId>arquillian-cube-docker-ftest-reporter</artifactId>
 
-  <properties>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>org.arquillian.cube</groupId>

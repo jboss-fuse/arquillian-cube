@@ -8,9 +8,6 @@
   <name>Arquillian Cube Docker Functional Test RestAssured</name>
   <artifactId>arquillian-cube-docker-ftest-restassured</artifactId>
 
-  <properties>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>org.arquillian.cube</groupId>
