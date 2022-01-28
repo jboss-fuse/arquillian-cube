@@ -1,5 +1,6 @@
 package org.arquillian.cube.docker.impl.client.reporter;
 
+import com.github.dockerjava.api.model.StatisticNetworksConfig;
 import com.github.dockerjava.api.model.Statistics;
 import org.arquillian.cube.docker.impl.client.utils.NumberConversion;
 
@@ -14,8 +15,8 @@ public class ContainerStatsBuilder {
 
         CubeStatistics stats = new CubeStatistics();
 
-        Map<String, Long> blkio = extractIORW(statistics.getBlkioStats());
-        Map<String, Long> memory = extractMemoryStats(statistics.getMemoryStats(), "usage", "max_usage", "limit");
+        Map<String, Long> blkio = extractIORW(statistics.getBlkioStats().getRawValues());
+        Map<String, Long> memory = extractMemoryStats(statistics.getMemoryStats().getRawValues(), "usage", "max_usage", "limit");
 
         stats.setIoBytesRead(blkio.get("io_bytes_read"));
         stats.setIoBytesWrite(blkio.get("io_bytes_write"));
@@ -29,17 +30,17 @@ public class ContainerStatsBuilder {
         return stats;
     }
 
-    private static Map<String, Map<String, Long>> extractNetworksStats(Map<String, Object> map) {
+    private static Map<String, Map<String, Long>> extractNetworksStats(Map<String, StatisticNetworksConfig> snc) {
         Map<String, Map<String, Long>> nwStatsForEachNICAndTotal = new LinkedHashMap<>();
-        if (map != null) {
+        if (snc != null) {
             long totalRxBytes = 0, totalTxBytes = 0;
 
-            for (Map.Entry<String, Object> entry: map.entrySet()) {
+            for (Map.Entry<String, StatisticNetworksConfig> entry: snc.entrySet()) {
                 Map<String, Long> nwStats = new LinkedHashMap<>();
                 String adapterName = entry.getKey();
-                if (entry.getValue() instanceof LinkedHashMap) {
+                if (entry.getValue().getRawValues() != null) {
 
-                    Map<String, ?> adapter = (LinkedHashMap) entry.getValue();
+                    Map<String, ?> adapter = (Map<String, ?>) entry.getValue();
 
                     long rxBytes = NumberConversion.convertToLong(adapter.get("rx_bytes"));
                     long txBytes = NumberConversion.convertToLong(adapter.get("tx_bytes"));
