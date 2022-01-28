@@ -1,6 +1,12 @@
 package org.arquillian.cube.docker.impl.client.reporter;
 
+import com.github.dockerjava.api.model.BlkioStatEntry;
+import com.github.dockerjava.api.model.BlkioStatsConfig;
+import com.github.dockerjava.api.model.DockerObjectAccessor;
+import com.github.dockerjava.api.model.MemoryStatsConfig;
+import com.github.dockerjava.api.model.StatisticNetworksConfig;
 import com.github.dockerjava.api.model.Statistics;
+import com.github.dockerjava.api.model.StatsConfig;
 import com.github.dockerjava.api.model.Version;
 import org.arquillian.cube.docker.impl.client.CubeDockerConfiguration;
 import org.arquillian.cube.docker.impl.client.DefinitionFormat;
@@ -278,54 +284,54 @@ public class TakeDockerEnvironmentTest {
         return ReporterConfiguration.fromMap(new LinkedHashMap<>());
     }
 
-    private Map<String, Object> getNetworks() {
-        Map<String, Object> nw = new LinkedHashMap<>();
-        Map<String, Integer> bytes = new LinkedHashMap<>();
-        bytes.put("rx_bytes", 724);
-        bytes.put("tx_bytes", 418);
-        bytes.put("rx_packets", 19);
-        nw.put("eth0", bytes);
+    private Map<String, StatisticNetworksConfig> getNetworks() {
+        Map<String, StatisticNetworksConfig> nw = new LinkedHashMap<>();
 
+        StatisticNetworksConfig statisticNetworksConfig = new StatisticNetworksConfig();
+        DockerObjectAccessor.overrideRawValue(statisticNetworksConfig, "rx_bytes", 724);
+        DockerObjectAccessor.overrideRawValue(statisticNetworksConfig, "tx_bytes", 418);
+        DockerObjectAccessor.overrideRawValue(statisticNetworksConfig, "rx_packets", 19);
+        nw.put("eth0", statisticNetworksConfig);
         return nw;
     }
 
-    private Map<String, Object> getMemory() {
-        Map<String, Object> memory = new LinkedHashMap<>();
-        memory.put("usage", 35135488);
-        memory.put("max_usage", 35770368);
-        memory.put("limit", 20444532736L);
-        memory.put("stats", new LinkedHashMap<>());
+    private MemoryStatsConfig getMemory() {
+        MemoryStatsConfig memory = new MemoryStatsConfig();
+        DockerObjectAccessor.overrideRawValue(memory, "usage", 35135488);
+        DockerObjectAccessor.overrideRawValue(memory, "max_usage", 35770368);
+        DockerObjectAccessor.overrideRawValue(memory, "limit", 20444532736L);
+        DockerObjectAccessor.overrideRawValue(memory, "stats", new StatsConfig());
 
         return memory;
     }
 
-    private Map<String, Object> getIOStats() {
-        Map<String, Object> blkIO = new LinkedHashMap<>();
-        List<LinkedHashMap<String, ?>> io = new ArrayList<>();
-        LinkedHashMap ioServiceRead = new LinkedHashMap();
+    private BlkioStatsConfig getIOStats() {
+        BlkioStatsConfig blkIO = new BlkioStatsConfig();
+        List<BlkioStatEntry> io = new ArrayList<>();
+        BlkioStatEntry ioServiceRead = new BlkioStatEntry();
 
-        ioServiceRead.put("major", 7);
-        ioServiceRead.put("minor", 0);
-        ioServiceRead.put("op", "Read");
-        ioServiceRead.put("value", 50688);
+        DockerObjectAccessor.overrideRawValue(ioServiceRead, "major", 7);
+        DockerObjectAccessor.overrideRawValue(ioServiceRead, "minor", 0);
+        DockerObjectAccessor.overrideRawValue(ioServiceRead, "op", "Read");
+        DockerObjectAccessor.overrideRawValue(ioServiceRead, "value", 50688);
         io.add(ioServiceRead);
 
-        LinkedHashMap ioServiceWrite = new LinkedHashMap();
-        ioServiceWrite.put("major", 7);
-        ioServiceWrite.put("minor", 0);
-        ioServiceWrite.put("op", "Write");
-        ioServiceWrite.put("value", 0);
+        BlkioStatEntry ioServiceWrite = new BlkioStatEntry();
+        DockerObjectAccessor.overrideRawValue(ioServiceWrite, "major", 7);
+        DockerObjectAccessor.overrideRawValue(ioServiceWrite, "minor", 0);
+        DockerObjectAccessor.overrideRawValue(ioServiceWrite, "op", "Write");
+        DockerObjectAccessor.overrideRawValue(ioServiceWrite, "value", 0);
         io.add(ioServiceWrite);
 
-        LinkedHashMap ioServiceSync = new LinkedHashMap();
-        ioServiceSync.put("major", 7);
-        ioServiceSync.put("minor", 0);
-        ioServiceSync.put("op", "Sync");
-        ioServiceSync.put("value", 0);
+        BlkioStatEntry ioServiceSync = new BlkioStatEntry();
+        DockerObjectAccessor.overrideRawValue(ioServiceSync, "major", 7);
+        DockerObjectAccessor.overrideRawValue(ioServiceSync, "minor", 0);
+        DockerObjectAccessor.overrideRawValue(ioServiceSync, "op", "Sync");
+        DockerObjectAccessor.overrideRawValue(ioServiceSync, "value", 0);
         io.add(ioServiceSync);
 
-        blkIO.put("io_service_bytes_recursive", io);
-        blkIO.put("io_time_recursive", new ArrayList<>());
+        DockerObjectAccessor.overrideRawValue(blkIO, "io_service_bytes_recursive", io);
+        DockerObjectAccessor.overrideRawValue(blkIO, "io_time_recursive", new ArrayList<>());
 
         return blkIO;
     }
