@@ -394,7 +394,7 @@ public class DockerClientExecutor {
             }
 
             if (containerConfiguration.getCpuQuota() != null) {
-                createContainerCmd.getHostConfig().withCpuQuota(containerConfiguration.getCpuQuota());
+                createContainerCmd.getHostConfig().withCpuQuota((long) containerConfiguration.getCpuQuota());
             }
 
             if (containerConfiguration.getAttachStdin() != null) {
