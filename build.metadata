@@ -1,0 +1,15 @@
+# Created by buildmetadata-maven-plugin 1.7.0 ( SHA: 6f444cae ) 
+build.artifactId=arquillian-cube-kubernetes-resources-ftest
+build.groupId=org.arquillian.cube
+build.java.compiler=HotSpot 64-Bit Tiered Compilers
+build.java.runtime.name=OpenJDK Runtime Environment
+build.java.runtime.version=1.8.0_352-b10
+build.java.vendor=everfree
+build.java.vm=OpenJDK 64-Bit Server VM
+build.maven.execution.cmdline=clean source\:jar-no-fork install -DskipTests -Dcheckstyle.skip\=true -Dpmd.skip\=true -Drat.skip\=true -P_rh
+build.maven.version=3.8.6
+build.scmRevision.date=10.11.2022
+build.scmRevision.id=9369efa437ea205c90bc85386ac1cb4b5b5d205f
+build.scmRevision.url=scm\:git\:git\://git@github.com\:arquillian/arquillian-cube.git/arquillian-cube-kubernetes-parent/arquillian-cube-kubernetes-resources-ftest
+build.version=1.8.2-SNAPSHOT
+build.version.full=1.8.2-SNAPSHOTr9369efa437ea205c90bc85386ac1cb4b5b5d205f
