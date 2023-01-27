@@ -98,7 +98,7 @@
     <version.istio>1.1.1</version.istio>
     <version.awaitility>3.0.0</version.awaitility>
     <version.junit5>5.0.3</version.junit5>
-    <version.slf4j>1.7.32.redhat-00001</version.slf4j>
+    <version.slf4j>1.7.36.redhat-00002</version.slf4j>
   </properties>
 
   <dependencyManagement>
