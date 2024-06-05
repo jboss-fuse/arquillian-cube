@@ -107,12 +107,12 @@
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
-      <version>2.15.1</version>
+      <version>2.15.1.redhat-00001</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-compress</artifactId>
-      <version>1.26.0</version>
+      <version>1.26.0.redhat-00002</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
